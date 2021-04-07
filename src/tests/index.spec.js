@@ -23,4 +23,55 @@ describe("Quote Calculations", () => {
       expect(bmi).toEqual(36);
     });
   });
+
+  describe("getQuoteCoefficient", () => {
+    it("Returns the correct values when passed with a valid age, bmi and is not smoking", () => {
+      let age = "";
+      let bmi = "";
+      const isSmoker = "";
+      let coeffcient = getQuoteCoefficient(age, bmi, isSmoker);
+      expect(coeffcient).toEqual(0);
+    });
+    it("Returns the correct values when passed with a valid age, bmi and is not smoking", () => {
+      let age = "test";
+      let bmi = "test";
+      const isSmoker = false;
+      let coeffcient = getQuoteCoefficient(age, bmi, isSmoker);
+      expect(coeffcient).toEqual(0);
+    });
+    it("Returns the correct values when passed with a valid age, bmi and is not smoking", () => {
+      let age = 25;
+      let bmi = 25;
+      const isSmoker = false;
+      let coeffcient = getQuoteCoefficient(age, bmi, isSmoker);
+      expect(coeffcient).toEqual(4.8);
+
+      age = 50;
+      bmi = 30;
+      coeffcient = getQuoteCoefficient(age, bmi, isSmoker);
+      expect(coeffcient).toEqual(1.6);
+
+      age = 80;
+      bmi = 22;
+      coeffcient = getQuoteCoefficient(age, bmi, isSmoker);
+      expect(coeffcient).toEqual(2);
+    });
+    it("Returns the correct values when passed with a valid age, bmi and is smoking", () => {
+      let age = 25;
+      let bmi = 25;
+      const isSmoker = true;
+      let coeffcient = getQuoteCoefficient(age, bmi, isSmoker);
+      expect(coeffcient).toEqual(3.8);
+
+      age = 50;
+      bmi = 30;
+      coeffcient = getQuoteCoefficient(age, bmi, isSmoker);
+      expect(coeffcient).toEqual(0.8);
+
+      age = 80;
+      bmi = 22;
+      coeffcient = getQuoteCoefficient(age, bmi, isSmoker);
+      expect(coeffcient).toEqual(1.2);
+    });
+  });
 });

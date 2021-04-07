@@ -21,6 +21,8 @@ function calculateBMI(weight, height) {
 }
 
 function getQuoteCoefficient(age, bmi, isSmoker) {
+  if (!age || !bmi) return 0;
+  if (typeof age !== "number" || typeof bmi !== "number" || typeof isSmoker !== "boolean") return 0;
   let coeffcient;
 
   const isYoungAdult = age >= 18 && age <= 28;
@@ -31,23 +33,23 @@ function getQuoteCoefficient(age, bmi, isSmoker) {
   const isAverageBmi = bmi >= 23 && bmi <= 26;
   const isOverweightBmi = bmi >= 27 && bmi <= 32;
 
-  let ageCoefficient;
+  let bmiCoefficient;
   if (isSmoker) {
-    if (isYoungAdult) ageCoefficient = 2.4;
-    if (isAdult) ageCoefficient = 3.8;
-    if (isOlderAdult) ageCoefficient = 2;
+    if (isHealthyBmi) bmiCoefficient = 2.4;
+    if (isAverageBmi) bmiCoefficient = 3.8;
+    if (isOverweightBmi) bmiCoefficient = 2;
   } else {
-    if (isYoungAdult) ageCoefficient = 3.2;
-    if (isAdult) ageCoefficient = 4.8;
-    if (isOlderAdult) ageCoefficient = 2.8;
+    if (isHealthyBmi) bmiCoefficient = 3.2;
+    if (isAverageBmi) bmiCoefficient = 4.8;
+    if (isOverweightBmi) bmiCoefficient = 2.8;
   }
 
-  let bmiCoefficient;
-  if (isHealthyBmi) bmiCoefficient = 0;
-  if (isAverageBmi) bmiCoefficient = 0.6;
-  if (isOverweightBmi) bmiCoefficient = 0.6 * 2;
+  let ageCoefficient;
+  if (isYoungAdult) ageCoefficient = 0;
+  if (isAdult) ageCoefficient = 0.6;
+  if (isOlderAdult) ageCoefficient = 0.6 * 2;
 
-  coeffcient = ageCoefficient - bmiCoefficient;
+  coeffcient = Math.round((bmiCoefficient - ageCoefficient) * 10) / 10;
   return coeffcient;
 }
 
