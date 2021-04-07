@@ -19,7 +19,12 @@ function QuoteForm({ handleQuote }) {
     }
   };
 
-  const handleCancel = () => {};
+  const handleCancel = () => {
+    setAge("");
+    setHeight("");
+    setWeight("");
+    setIsSmoker(false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
