@@ -43,13 +43,13 @@ This will install all the modules that are listed in the package.json
 Once you have the modules installed, you can run the app via npm/yarn depending on how you installed the dependencies:
 
 ```
-npm start
+npm dev
 ```
 
 or
 
 ```
-yarn start
+yarn dev
 ```
 
 # Testing the code
