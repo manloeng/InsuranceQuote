@@ -1,0 +1,31 @@
+.form {
+  text-align: center;
+}
+
+.form div {
+  width: 15rem;
+  padding: 1rem;
+}
+
+.form select {
+  width: 15rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+}
+
+.form input {
+  width: 15rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+}
+
+.form label {
+  margin: 1rem;
+}
+
+.form button {
+  width: 5rem;
+  margin: 1.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+}
