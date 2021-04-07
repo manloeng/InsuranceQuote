@@ -73,5 +73,49 @@ describe("Quote Calculations", () => {
       coeffcient = getQuoteCoefficient(age, bmi, isSmoker);
       expect(coeffcient).toEqual(1.2);
     });
+
+    describe("calculateQuote", () => {
+      it("Returns the correct values when passed with a valid age, bmi and is smoking", () => {
+        let age = 25;
+        let weight = 55;
+        let height = 155;
+        const isSmoker = true;
+        let payload = { age, weight, height, isSmoker };
+        let quote = calculateQuote(payload);
+        expect(quote).toEqual(380000);
+
+        age = 50;
+        weight = 80;
+        height = 200;
+        payload = { age, weight, height, isSmoker };
+        quote = calculateQuote(payload);
+        expect(quote).toEqual(120000);
+      });
+      it("Returns the correct values when passed with a valid age, bmi and is not smoking", () => {
+        let age = 25;
+        let weight = 55;
+        let height = 155;
+        const isSmoker = false;
+        let payload = { age, weight, height, isSmoker };
+        let quote = calculateQuote(payload);
+        expect(quote).toEqual(480000);
+
+        age = 50;
+        weight = 80;
+        height = 200;
+        payload = { age, weight, height, isSmoker };
+        quote = calculateQuote(payload);
+        expect(quote).toEqual(200000);
+      });
+      it("Returns the error message passed with an data set", () => {
+        const age = 80;
+        const weight = 80;
+        const height = 100;
+        const isSmoker = true;
+        const payload = { age, weight, height, isSmoker };
+        const quote = calculateQuote(payload);
+        expect(quote).toEqual("Unable able to generate Quote - please contact customer services");
+      });
+    });
   });
 });
