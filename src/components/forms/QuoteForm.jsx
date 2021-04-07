@@ -38,9 +38,9 @@ function QuoteForm({ handleQuote }) {
       <div>
         <label>Select Your Age</label>
         <select name="age" value={age ? age : ""} onChange={(e) => setAge(parseInt(e.target.value))} required>
-          {new Array(150).fill().map((array, index) => (
-            <option key={index}>{index}</option>
-          ))}
+          {new Array(81).fill().map((array, index) => {
+            if (index > 17) return <option key={index}>{index}</option>;
+          })}
         </select>
       </div>
 
