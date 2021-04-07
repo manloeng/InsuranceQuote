@@ -29,7 +29,6 @@ function QuoteForm({ handleQuote }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = { age, height, weight, isSmoker };
-    console.log(formData, "data");
     const quote = calculateQuote(formData);
     handleQuote(quote);
   };
