@@ -13,6 +13,9 @@ function calculateQuote({ age, height, weight, isSmoker }) {
 }
 
 function calculateBMI(weight, height) {
+  if (!weight || !height) return 0;
+  if (typeof weight !== "number" || typeof height !== "number") return 0;
+
   const bmi = weight / (height * height);
   return bmi;
 }
